@@ -53,11 +53,11 @@ def llama_result():
 
 
 @app.route("/sealion",methods=["GET","POST"])
-def llama():
-    return(render_template("llama.html"))
+def sealion():
+    return(render_template("sealion.html"))
 
 @app.route("/sealion_result",methods=["GET","POST"])
-def llama_result():
+def sealion_result():
     q = request.form.get("q")
     r = client.chat.completions.create(
     model="Gemma-SEA-LION-v3-9B-IT-GGUF",
@@ -65,6 +65,6 @@ def llama_result():
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": q}])
     r = r.choices[0].message.content
-    return(render_template("llama_result.html",r=r))
+    return(render_template("sealion_result.html",r=r))
 if __name__ == "__main__":
     app.run()
