@@ -63,6 +63,10 @@ def llama_result():
     r = r.choices[0].message.content
     return(render_template("llama_result.html",r=r))
 
+@app.route("/paynow",methods=["GET","POST"])
+def paynow():
+    return(render_template("paynow.html"))
+
 @app.route("/userlog",methods=["GET","POST"])
 def userlog():
     conn = sqlite3.connect("user.db")
